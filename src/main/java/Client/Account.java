@@ -17,6 +17,22 @@ public class Account {
         this.lastTimeUpdated = LocalDateTime.now();
     }
 
+    public Boolean deposit(BigDecimal amount, String currency){
+        // NZ KOE SE TEGLI OT SMETKATA I KOE VKARVA PARI
+        // TODO handle currencies. use FXRates
+        if(this.amount.compareTo(amount) >= 0){
+            this.amount = this.amount.subtract(amount);
+            return true;
+        }
+        return false;
+    }
+
+    public Boolean withdrawal(BigDecimal amount, String currency){
+        // TODO handle currencies. use FXRates
+            this.amount = this.amount.add(amount);
+            return true;
+
+    }
 
     public String getCurrency() {
         return currency;
@@ -53,4 +69,6 @@ public class Account {
         this.id = id;
         return this;
     }
+
+
 }
